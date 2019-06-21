@@ -26,7 +26,7 @@ composer install
 
 ### Flow Diagram
 
-![alt text](https://github.com/V1n1c1us/challengeApi/blob/master/public/img/Diagram.png "Fluxo Diagram")
+![alt text](https://github.com/V1n1c1us/challengeApi/blob/master/public/img/Flow%20Diagram.png "Fluxo Diagram")
 
 
 Read the doc ChallengeApi : https://documenter.getpostman.com/view/4362475/S1a1Z81Q
