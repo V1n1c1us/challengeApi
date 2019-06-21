@@ -12,23 +12,28 @@ class BreedControllerApi extends Controller {
     * Receives breed type model
     * @var Breed
     */
-   public function __construct(Breed $breed, ServicesSearch $service) {
+   public function __construct(Breed $breed, ServicesSearch $service)
+   {
        $this->breed = $breed;
        $this->service = $service;
    }
    /**
     * @param  \Illuminate\Http\Request  $request
     */
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $resLocal = $this->service->searchDataBase($request->name);
         $resExt = $this->service->searchApi($request->name);
 
-         if($this->service->connectDB()){
-             if($resLocal->isEmpty()){
-                 $this->service->storageLocal($request->name);
-                 return response()->json($resExt);
-             } else {
-                  return response()->json($resLocal);
+         if($this->service->connectDB())
+         {
+             if($resLocal->isEmpty())
+             {
+                $this->service->storageLocal($request->name);
+                    return response()->json($resExt);
+             }else
+             {
+                return response()->json($resLocal);
              }
          }
          return $resExt;
@@ -37,31 +42,22 @@ class BreedControllerApi extends Controller {
     * Inserts API data on local database
     * @return \Illuminate\Http\Response
     */
-   public function create() {
-    try {
+   public function create()
+   {
+    try
+    {
         $create = $this->service->apiStore();
         return response()->json([
-                'success' => 'Data stored successfully'
-            ], 200);
-    } catch(Exception $e){
+                    'success' => 'Data stored successfully'
+                ], 200);
+    }catch(Exception $e)
+    {
         return response()->json([
-            'error' => 'Data has already been entered into the database'
-        ], 500);
+                    'error' => 'Data has already been entered into the database'
+                ], 500);
     }
 
    }
-
-   public function show($id) {
-       /*$user = $this->user->find($id);
-       if(!$user) {
-           return response()->json([
-               'status' => 'não encontado'
-           ]);
-       }
-       return response()->json($user, 201);
-       */
-   }
-
 }
 
 

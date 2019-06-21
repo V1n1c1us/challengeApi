@@ -5,7 +5,8 @@ use App\Breed;
 
 class ServicesSearch {
 
-    public function __construct(Breed $breed) {
+    public function __construct(Breed $breed)
+    {
         $this->breed = $breed;
         $this->externalUrl = "https://api.thecatapi.com/v1/breeds/";
     }
@@ -30,8 +31,7 @@ class ServicesSearch {
             $array = json_decode($response, true);
 
             return $array;
-            }
-            catch(\Exception $e)
+            } catch(\Exception $e)
             {
                 report($e);
                 return false;
@@ -40,11 +40,12 @@ class ServicesSearch {
 
     public function searchDataBase($name)
     {
-        try {
+        try
+        {
            $dataBreed = $this->breed->where('name', 'like', '%' . $name . '%')->get();
            return $dataBreed;
-        }
-        catch(\Exception $e) {
+        } catch(\Exception $e)
+        {
             report($e);
             return false;
         }
@@ -52,11 +53,12 @@ class ServicesSearch {
 
     public function serachById($id)
     {
-        try {
+        try
+        {
            $dataBreed = $this->breed->where('id', 'like', '%' . $name . '%')->get();
            return $dataBreed;
-        }
-        catch(\Exception $e) {
+        } catch(\Exception $e)
+        {
             report($e);
             return false;
         }
@@ -82,8 +84,7 @@ class ServicesSearch {
                 ]);
             }
             return $data;
-        }
-        catch(\Exception $e)
+        } catch(\Exception $e)
         {
             report($e);
             return false;
@@ -94,7 +95,8 @@ class ServicesSearch {
     {
         $response = $this->curl($this->externalUrl);
         $array = json_decode($response, true);
-        foreach ($array as $key => $value) {
+        foreach ($array as $key => $value)
+        {
             Breed::create([
                 'id' => $value['id'],
                 'name' => $value['name'],
@@ -106,7 +108,8 @@ class ServicesSearch {
         }
     }
 
-    private function curl($url, $method = null) {
+    private function curl($url, $method = null)
+    {
         if (!$method) $method = "GET";
             $curl = curl_init();
             curl_setopt_array($curl, array(
