@@ -31,3 +31,8 @@ composer install
 Read the doc ChallengeApi : https://documenter.getpostman.com/view/4362475/S1a1Z81Q
 
 Read the Cat Api : https://docs.thecatapi.com/
+
+### Credits
+
+[The Cat Api](https://docs.thecatapi.com/)
+
