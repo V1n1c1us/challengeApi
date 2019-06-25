@@ -20,7 +20,7 @@ composer install
 ```
 3. Copi the **env.example** and rename to **.env** and run ```php artisan generate:key``` to generate APP_KEY.
 
-4. Create an database (MYSQL) to your application and run ```php artisan generate:key``` for generate migrations.
+4. Create an database (MYSQL) to your application and run ```php artisan migration``` for generate migrations.
 
 **Installation complete. ChallengeApi is ready to be used**
 
